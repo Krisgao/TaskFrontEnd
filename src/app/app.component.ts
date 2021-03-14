@@ -1,10 +1,88 @@
-import { Component } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
+import { TestService } from './test.service';
+import { Router } from "@angular/router";
+import {MatPaginator} from '@angular/material/paginator';
+import { ActivatedRoute } from '@angular/router';
+import { ViewChild } from '@angular/core';
+import { Subscription } from 'rxjs';
+import { OnDestroy } from '@angular/core';
+import {MatDialog, MatDialogConfig} from "@angular/material/dialog";
+import { TaskDetailComponent } from './task-detail/task-detail.component';
 
+export interface Quote {
+    QuoteID: number;
+    QuoteType: string;
+    Contact: string;
+    Task: string;
+    DueDate: Date;
+    TaskType: string;
+  }
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
+export class AppComponent implements OnInit, OnDestroy{
+  
+  @ViewChild(MatPaginator) paginator: MatPaginator;
+  
+  displayedColumns: string[] = [
+        'QuoteID',
+        'QuoteType',
+        'Contact',
+        'Task',
+        'DueDate',
+        'TaskType',
+        'More'
+      ];
+  testData;
+  mysub: Subscription;
+  quotes: Quote[];
+  constructor(private mytest:TestService, private router: Router,private dialog: MatDialog){}
+  ngOnInit() {
+    this.mysub = this.mytest.getData().subscribe(
+            (data) => {
+              this.testData = data;
+            },
+            (error) => {
+              console.log(error);
+            },
+            () => {
+              console.log("I'm finished");
+            }
+          );
+      
+  }
+        
+    openDialog(QuoteID, QuoteType, Contact,Task,DueDate,TaskType) {
+
+    const dialogConfig = new MatDialogConfig();
+
+    dialogConfig.disableClose = true;
+    dialogConfig.autoFocus = true;
+    dialogConfig.data = {
+      id: QuoteID,
+      type: QuoteType,
+      contact: Contact,
+      task: Task,
+      Due: DueDate,
+      Tasktype: TaskType
+      // title: 'Angular For Beginners'
+  };
+  debugger
+    this.dialog.open(TaskDetailComponent, dialogConfig);
+    const dialogRef = this.dialog.open(TaskDetailComponent, dialogConfig);
+
+    dialogRef.afterClosed().subscribe(
+        data => console.log("Dialog output:", data)
+    );   
+}
   title = 'TaskFrontEnd';
+  navigate() {
+    this.router.navigate(['task']);
+  }
+  ngOnDestroy() {
+    this.mysub.unsubscribe();
+  }
+  
 }
