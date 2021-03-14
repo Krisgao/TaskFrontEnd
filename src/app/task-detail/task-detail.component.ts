@@ -28,7 +28,7 @@ export class TaskDetailComponent implements OnInit {
       this.ID = data.id;
       this.quotetype = data.type;
     this.contact = data.contact;
-    this.task = data.Task;
+    this.task = data.task;
     this.tasktype = data.Tasktype;
     this.duedate = data.Due;
 
