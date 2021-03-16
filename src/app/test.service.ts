@@ -18,8 +18,8 @@ export class TestService {
     return this.httpClient.delete('api/values/4');
   }
 
-  updateData() {
-    return this.httpClient.put('', {});
+  updateData(id,quote) {
+    return this.httpClient.put('https://localhost:44388/api/Quote/TaskById?id={'+ id +'}', quote);
   }
 
   sayHello() {

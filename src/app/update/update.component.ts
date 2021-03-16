@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { AppComponent } from '../app.component';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { TestService } from '../test.service';
 
 @Component({
   selector: 'app-update',
@@ -19,7 +20,7 @@ export class UpdateComponent implements OnInit {
   tasktype: any;
   duedate: any;
 
-  constructor(private router: Router, private fb: FormBuilder,
+  constructor(private mytest: TestService, private router: Router, private fb: FormBuilder,
     private dialogRef: MatDialogRef<UpdateComponent>, @Inject(MAT_DIALOG_DATA) data) {
     this.description = "Edit";
     this.ID = data.id;
@@ -42,7 +43,18 @@ export class UpdateComponent implements OnInit {
     });
   }
   save() {
-    this.dialogRef.close(this.form.value);
+    var c = this.ID;
+    debugger
+    // this.dialogRef.close(this.form.value);
+    this.mytest.updateData(c, this.form.value).subscribe(
+      (error) => {
+        console.log(error);
+      },
+      () => {
+        console.log("I'm finished");
+      }
+    );
+    this.dialogRef.close();
   }
 
   close() {
