@@ -1,4 +1,4 @@
-import { Component, OnInit, Inject } from '@angular/core';
+import { Component, OnInit, Inject, ElementRef, AfterViewInit } from '@angular/core';
 import { TestService } from './test.service';
 import { Router } from "@angular/router";
 import { MatPaginator } from '@angular/material/paginator';
@@ -11,6 +11,7 @@ import { TaskDetailComponent } from './task-detail/task-detail.component';
 import { UpdateComponent } from './update/update.component';
 import { AddComponent } from './add/add.component';
 import { DeleteComponent } from './delete/delete.component';
+import { MatTableDataSource } from '@angular/material/table';
 
 export interface Quote {
   QuoteID: number;
@@ -25,9 +26,10 @@ export interface Quote {
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent implements OnInit, OnDestroy {
+export class AppComponent implements OnInit, OnDestroy, AfterViewInit {
+  @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator; // pagenation
+  @ViewChild('input', { static: true }) input: ElementRef;
 
-  @ViewChild(MatPaginator) paginator: MatPaginator;
 
   displayedColumns: string[] = [
     'QuoteID',
@@ -38,7 +40,8 @@ export class AppComponent implements OnInit, OnDestroy {
     'TaskType',
     'More'
   ];
-  testData;
+  
+  testData = new MatTableDataSource<any>();
   mysub: Subscription;
   quotes: Quote[];
   constructor(private mytest: TestService, private router: Router, private dialog: MatDialog) { }
@@ -46,11 +49,17 @@ export class AppComponent implements OnInit, OnDestroy {
     this.readData();
 
   }
+  ngAfterViewInit() {
+    this.testData.paginator = this.paginator;
+  }
 
  readData(){
   this.mysub = this.mytest.getData().subscribe(
-    (data) => {
-      this.testData = data;
+    (data: any) => {
+      this.quotes = data;
+      this.testData = new MatTableDataSource<any>(this.quotes);
+      this.testData.paginator = this.paginator;
+      
     },
     (error) => {
       console.log(error);
@@ -74,7 +83,7 @@ export class AppComponent implements OnInit, OnDestroy {
       task: Task,
       Due: DueDate,
       Tasktype: TaskType
-      // title: 'Angular For Beginners'
+      
     };
 
     //this.dialog.open(TaskDetailComponent, dialogConfig);
@@ -172,6 +181,11 @@ export class AppComponent implements OnInit, OnDestroy {
   }
   ngOnDestroy() {
     this.mysub.unsubscribe();
+  }
+  searchQuote(searchValue: string) {
+    searchValue = searchValue.trim();
+    searchValue = searchValue.toLowerCase();
+    this.testData.filter = searchValue;
   }
 
 }

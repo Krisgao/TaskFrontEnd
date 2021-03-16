@@ -15,6 +15,8 @@ import { UpdateComponent } from './update/update.component';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { DeleteComponent } from './delete/delete.component';
+import { MatPaginatorModule } from '@angular/material/paginator';
+
 
 
 
@@ -37,7 +39,8 @@ import { DeleteComponent } from './delete/delete.component';
     MatDialogModule,
     BrowserAnimationsModule,
     MatDatepickerModule,
-    MatNativeDateModule
+    MatNativeDateModule,
+    MatPaginatorModule
   ],
   providers: [TestService,MatDialogModule,MatNativeDateModule, MatDatepickerModule],
   bootstrap: [AppComponent],

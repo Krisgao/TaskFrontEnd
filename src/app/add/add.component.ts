@@ -1,5 +1,5 @@
 import { Component, Inject, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { TestService } from '../test.service';
@@ -32,11 +32,11 @@ export class AddComponent implements OnInit {
 
   ngOnInit(): void {
     this.form = this.fb.group({
-      QuoteType: [this.quotetype, []],
-      Contact: [this.contact, []],
-      Task: [this.task, []],
-      DueDate: [this.duedate, []],
-      TaskType: [this.tasktype, []]
+      QuoteType: [this.quotetype, [Validators.required]],
+      Contact: [this.contact, [Validators.required]],
+      Task: [this.task, [Validators.required]],
+      DueDate: [this.duedate, [Validators.required]],
+      TaskType: [this.tasktype, [Validators.required]]
 
     });
   }

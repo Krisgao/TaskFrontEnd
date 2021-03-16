@@ -2,28 +2,63 @@
 
 <mat-dialog-content [formGroup]="form">
     <mat-form-field>
-        <input matInput placeholder="QuoteType" formControlName="QuoteType">
+        <input required matInput placeholder="QuoteType" formControlName="QuoteType">
+        <div *ngIf="form.get('QuoteType').invalid && (form.get('QuoteType').dirty || form.get('QuoteType').touched)"
+            class="alert alert-danger">
+            <div *ngIf="form.get('QuoteType').errors.required">
+                Quote Type is required.
+            </div>
+        </div>
     </mat-form-field>
+    <br>
     <mat-form-field>
-        <input matInput placeholder="Contact" formControlName="Contact">
+        <input required matInput placeholder="Contact" formControlName="Contact">
+        <div *ngIf="form.get('Contact').invalid && (form.get('Contact').dirty || form.get('Contact').touched)"
+            class="alert alert-danger">
+            <div *ngIf="form.get('Contact').errors.required">
+                Quote Type is required.
+            </div>
+        </div>
     </mat-form-field>
+    <br>
     <mat-form-field>
-        <input matInput placeholder="Task" formControlName="Task">
+        <input required matInput placeholder="Task" formControlName="Task">
+        <div *ngIf="form.get('Task').invalid && (form.get('Task').dirty || form.get('Task').touched)"
+            class="alert alert-danger">
+            <div *ngIf="form.get('Task').errors.required">
+                Quote Type is required.
+            </div>
+        </div>
     </mat-form-field>
-    <mat-form-field appearance="fill">
+    <br>
+    <mat-form-field>
             <mat-label>Choose a date</mat-label>
-            <input matInput [matDatepicker]="picker" formControlName="DueDate" />
+            <input required matInput [matDatepicker]="picker"  formControlName="DueDate"   />
+        <div *ngIf="form.get('DueDate').invalid && (form.get('DueDate').dirty || form.get('DueDate').touched)"
+            class="alert alert-danger">
+            <div *ngIf="form.get('DueDate').errors.required">
+                Quote Type is required.
+            </div>
+        </div>
             <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
             <mat-datepicker #picker></mat-datepicker>
           </mat-form-field>
+    <br>
     <mat-form-field>
-        <input matInput placeholder="TaskType" formControlName="TaskType">
+        <input required matInput placeholder="TaskType" formControlName="TaskType">
+        <div *ngIf="form.get('TaskType').invalid && (form.get('TaskType').dirty || form.get('TaskType').touched)"
+            class="alert alert-danger">
+            <div *ngIf="form.get('TaskType').errors.required">
+                Quote Type is required.
+            </div>
+        </div>
     </mat-form-field>
+    <br>
 
 
 </mat-dialog-content>
 
 <mat-dialog-actions>
     <button class="mat-raised-button" (click)="close()">Close</button>
-    <button class="mat-raised-button mat-primary" (click)="add()">Add</button>
+    <button [disabled]="!form.valid" class="mat-raised-button mat-primary" (click)="add()">Add</button>
 </mat-dialog-actions>

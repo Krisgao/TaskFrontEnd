@@ -6,56 +6,62 @@
 
 
 <h1 align="center">All Tasks</h1>
-<!-- <app-task-detail></app-task-detail> -->
-<button (click)="openAddDialog()"><i class="far fa-plus-square"></i></button>
+<div>
+    <!-- <app-task-detail></app-task-detail> -->
+    <button (click)="openAddDialog()">Add New</button>
+    <br>
+    <mat-form-field>
+        <input matInput placeholder="Search..." (keyup)="searchQuote($event.target.value)" />
+    </mat-form-field>
+    <br  />
+    <table mat-table [dataSource]="testData" class="mat-elevation-z8">
+          
+          <ng-container matColumnDef="QuoteID">
+                <th mat-header-cell *matHeaderCellDef>QuoteID</th>
+                <td mat-cell *matCellDef="let element">{{ element.QuoteID }}</td>
+              </ng-container>
 
+          
+          <ng-container matColumnDef="QuoteType">
+                <th mat-header-cell *matHeaderCellDef>QuoteType</th>
+                <td mat-cell *matCellDef="let element">{{ element.QuoteType }}</td>
+              </ng-container>
 
-<br  />
-<table mat-table [dataSource]="testData" class="mat-elevation-z8">
-      
-      <ng-container matColumnDef="QuoteID">
-            <th mat-header-cell *matHeaderCellDef>QuoteID</th>
-            <td mat-cell *matCellDef="let element">{{ element.QuoteID }}</td>
-          </ng-container>
+          
+          <ng-container matColumnDef="Contact">
+                <th mat-header-cell *matHeaderCellDef>Contact</th>
+                <td mat-cell *matCellDef="let element">{{ element.Contact }}</td>
+              </ng-container>
 
-      
-      <ng-container matColumnDef="QuoteType">
-            <th mat-header-cell *matHeaderCellDef>QuoteType</th>
-            <td mat-cell *matCellDef="let element">{{ element.QuoteType }}</td>
-          </ng-container>
+          
+          <ng-container matColumnDef="Task">
+                <th mat-header-cell *matHeaderCellDef>Task</th>
+                <td mat-cell *matCellDef="let element">{{ element.Task }}</td>
+              </ng-container>
 
-      
-      <ng-container matColumnDef="Contact">
-            <th mat-header-cell *matHeaderCellDef>Contact</th>
-            <td mat-cell *matCellDef="let element">{{ element.Contact }}</td>
-          </ng-container>
+          <ng-container matColumnDef="DueDate">
+                <th mat-header-cell *matHeaderCellDef>DueDate</th>
+                <td mat-cell *matCellDef="let element">{{ element.DueDate }}</td>
+              </ng-container>
 
-      
-      <ng-container matColumnDef="Task">
-            <th mat-header-cell *matHeaderCellDef>Task</th>
-            <td mat-cell *matCellDef="let element">{{ element.Task }}</td>
-          </ng-container>
+          <ng-container matColumnDef="TaskType">
+                <th mat-header-cell *matHeaderCellDef>TaskType</th>
+                <td mat-cell *matCellDef="let element">{{ element.TaskType }}</td>
+              </ng-container>
 
-      <ng-container matColumnDef="DueDate">
-            <th mat-header-cell *matHeaderCellDef>DueDate</th>
-            <td mat-cell *matCellDef="let element">{{ element.DueDate }}</td>
-          </ng-container>
+        <ng-container matColumnDef="More">
+                <th mat-header-cell *matHeaderCellDef>More</th>
+                <td mat-cell *matCellDef="let element"><button
+                    (click)="openDetailDialog(element.QuoteID, element.QuoteType, element.Contact, element.Task, element.DueDate, element.TaskType)"><i
+                        class="far fa-eye"></i></button>&nbsp;&nbsp;<button
+                    (click)="openEditDialog(element.QuoteID, element.QuoteType, element.Contact, element.Task, element.DueDate, element.TaskType)"><i
+                        class="fas fa-user-edit"></i></button>&nbsp;&nbsp;<button
+                    (click)="openDeleteDialog(element.QuoteID, element.QuoteType, element.Contact, element.Task, element.DueDate, element.TaskType)"><i
+                        class="fas fa-trash-alt"></i></button></td>
+              </ng-container>
 
-      <ng-container matColumnDef="TaskType">
-            <th mat-header-cell *matHeaderCellDef>TaskType</th>
-            <td mat-cell *matCellDef="let element">{{ element.TaskType }}</td>
-          </ng-container>
-
-    <ng-container matColumnDef="More">
-            <th mat-header-cell *matHeaderCellDef>More</th>
-            <td mat-cell *matCellDef="let element"><button
-                (click)="openDetailDialog(element.QuoteID, element.QuoteType, element.Contact, element.Task, element.DueDate, element.TaskType)"><i
-                    class="far fa-eye"></i></button><button
-                (click)="openEditDialog(element.QuoteID, element.QuoteType, element.Contact, element.Task, element.DueDate, element.TaskType)"><i
-                    class="fas fa-user-edit"></i></button><button (click)="openDeleteDialog(element.QuoteID, element.QuoteType, element.Contact, element.Task, element.DueDate, element.TaskType)"><i
-                    class="fas fa-trash-alt"></i></button></td>
-          </ng-container>
-
-      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-      <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
-</table>
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+    </table>
+    <mat-paginator [pageSizeOptions]="[3, 5, 10, 20]" showFirstLastButtons></mat-paginator>
+</div>>
