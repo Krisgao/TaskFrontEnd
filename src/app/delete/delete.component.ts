@@ -5,11 +5,11 @@ import { Router } from '@angular/router';
 import { TestService } from '../test.service';
 
 @Component({
-  selector: 'app-add',
-  templateUrl: './add.component.html',
-  styleUrls: ['./add.component.css']
+  selector: 'app-delete',
+  templateUrl: './delete.component.html',
+  styleUrls: ['./delete.component.css']
 })
-export class AddComponent implements OnInit {
+export class DeleteComponent implements OnInit {
   form: FormGroup;
   description: any;
   ID: any;
@@ -19,31 +19,33 @@ export class AddComponent implements OnInit {
   tasktype: any;
   duedate: any;
 
+
   constructor(private mytest: TestService, private router: Router, private fb: FormBuilder,
-    private dialogRef: MatDialogRef<AddComponent>, @Inject(MAT_DIALOG_DATA) data) {
-    this.description = "Add New";
-    
-    this.quotetype = '';
-    this.contact = '';
-    this.task = '';
-    this.tasktype = '';
-    this.duedate = '';
+    private dialogRef: MatDialogRef<DeleteComponent>, @Inject(MAT_DIALOG_DATA) data) {
+    this.description = "Do you want to delete this one?";
+    this.ID = data.id;
+    this.quotetype = data.type;
+    this.contact = data.contact;
+    this.task = data.task;
+    this.tasktype = data.Tasktype;
+    this.duedate = data.Due;
   }
 
   ngOnInit(): void {
     this.form = this.fb.group({
-      QuoteType: [this.quotetype, []],
-      Contact: [this.contact, []],
-      Task: [this.task, []],
-      DueDate: [this.duedate, []],
-      TaskType: [this.tasktype, []]
+      QuoteID: [this.ID,[]],
+      QuoteType: [this.quotetype,[]],
+      Contact: [this.contact,[]],
+      Task: [this.task,[]],
+      DueDate: [this.duedate,[]],
+      TaskType: [this.tasktype,[]]
 
     });
   }
 
-  add() {
+  delete() {
     // this.dialogRef.close(this.form.value);
-    this.mytest.postData(this.form.value).subscribe(
+    this.mytest.deleteData(this.ID).subscribe(
       (error) => {
         console.log(error);
       },
@@ -57,4 +59,5 @@ export class AddComponent implements OnInit {
   close() {
     this.dialogRef.close();
   }
+
 }

@@ -48,7 +48,6 @@ export class TaskDetailComponent implements OnInit {
   // save() {
   //   this.dialogRef.close(this.form.value);
   // }
-
   close() {
     this.dialogRef.close();
   }

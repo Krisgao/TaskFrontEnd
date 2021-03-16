@@ -12,13 +12,19 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { TaskDetailComponent } from './task-detail/task-detail.component';
 import { AddComponent } from './add/add.component';
 import { UpdateComponent } from './update/update.component';
+import { MatNativeDateModule } from '@angular/material/core';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { DeleteComponent } from './delete/delete.component';
+
+
 
 @NgModule({
   declarations: [
     AppComponent,
     TaskDetailComponent,
     AddComponent,
-    UpdateComponent
+    UpdateComponent,
+    DeleteComponent
   ],
   imports: [
     BrowserModule,
@@ -29,9 +35,11 @@ import { UpdateComponent } from './update/update.component';
     MatInputModule,
     MatTableModule,
     MatDialogModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    MatDatepickerModule,
+    MatNativeDateModule
   ],
-  providers: [TestService,MatDialogModule],
+  providers: [TestService,MatDialogModule,MatNativeDateModule, MatDatepickerModule],
   bootstrap: [AppComponent],
   entryComponents: [TaskDetailComponent]
 })

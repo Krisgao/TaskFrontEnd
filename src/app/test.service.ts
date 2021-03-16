@@ -11,15 +11,15 @@ export class TestService {
   }
 
   postData(item) {
-    return this.httpClient.post('', item);
+    return this.httpClient.post('https://localhost:44388/api/Quote/Add', item);
   }
 
-  deleData() {
-    return this.httpClient.delete('api/values/4');
+  deleteData(id) {
+    return this.httpClient.delete('https://localhost:44388/api/Quote/Delete?id='+ id +'');
   }
 
   updateData(id,quote) {
-    return this.httpClient.put('https://localhost:44388/api/Quote/TaskById?id={'+ id +'}', quote);
+    return this.httpClient.put('https://localhost:44388/api/Quote/Update?id='+ id +'', quote);
   }
 
   sayHello() {

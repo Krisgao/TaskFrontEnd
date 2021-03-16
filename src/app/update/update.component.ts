@@ -43,10 +43,8 @@ export class UpdateComponent implements OnInit {
     });
   }
   save() {
-    var c = this.ID;
-    debugger
     // this.dialogRef.close(this.form.value);
-    this.mytest.updateData(c, this.form.value).subscribe(
+    this.mytest.updateData(this.ID, this.form.value).subscribe(
       (error) => {
         console.log(error);
       },

@@ -7,7 +7,7 @@
 
 <h1 align="center">All Tasks</h1>
 <!-- <app-task-detail></app-task-detail> -->
-
+<button (click)="openAddDialog()"><i class="far fa-plus-square"></i></button>
 
 
 <br  />
@@ -52,7 +52,7 @@
                 (click)="openDetailDialog(element.QuoteID, element.QuoteType, element.Contact, element.Task, element.DueDate, element.TaskType)"><i
                     class="far fa-eye"></i></button><button
                 (click)="openEditDialog(element.QuoteID, element.QuoteType, element.Contact, element.Task, element.DueDate, element.TaskType)"><i
-                    class="fas fa-user-edit"></i></button><button (click)="navigate()"><i
+                    class="fas fa-user-edit"></i></button><button (click)="openDeleteDialog(element.QuoteID, element.QuoteType, element.Contact, element.Task, element.DueDate, element.TaskType)"><i
                     class="fas fa-trash-alt"></i></button></td>
           </ng-container>
 
