@@ -12,6 +12,7 @@ import { UpdateComponent } from './update/update.component';
 import { AddComponent } from './add/add.component';
 import { DeleteComponent } from './delete/delete.component';
 import { MatTableDataSource } from '@angular/material/table';
+import {MatSort} from '@angular/material/sort';
 
 export interface Quote {
   QuoteID: number;
@@ -29,6 +30,7 @@ export interface Quote {
 export class AppComponent implements OnInit, OnDestroy, AfterViewInit {
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator; // pagenation
   @ViewChild('input', { static: true }) input: ElementRef;
+  @ViewChild(MatSort) sort: MatSort;
 
 
   displayedColumns: string[] = [
@@ -50,7 +52,9 @@ export class AppComponent implements OnInit, OnDestroy, AfterViewInit {
 
   }
   ngAfterViewInit() {
+    this.testData.sort = this.sort;
     this.testData.paginator = this.paginator;
+    
   }
 
  readData(){
@@ -59,6 +63,7 @@ export class AppComponent implements OnInit, OnDestroy, AfterViewInit {
       this.quotes = data;
       this.testData = new MatTableDataSource<any>(this.quotes);
       this.testData.paginator = this.paginator;
+      this.testData.sort = this.sort;
       
     },
     (error) => {

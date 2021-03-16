@@ -16,6 +16,8 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { DeleteComponent } from './delete/delete.component';
 import { MatPaginatorModule } from '@angular/material/paginator';
+import {MatSortModule} from '@angular/material/sort';
+
 
 
 
@@ -40,10 +42,12 @@ import { MatPaginatorModule } from '@angular/material/paginator';
     BrowserAnimationsModule,
     MatDatepickerModule,
     MatNativeDateModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    MatSortModule,
+    
   ],
   providers: [TestService,MatDialogModule,MatNativeDateModule, MatDatepickerModule],
   bootstrap: [AppComponent],
-  entryComponents: [TaskDetailComponent]
+  entryComponents: [TaskDetailComponent,AddComponent,UpdateComponent,DeleteComponent]
 })
 export class AppModule { }
