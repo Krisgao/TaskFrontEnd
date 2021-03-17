@@ -63,8 +63,8 @@ import { ToastrModule } from 'ngx-toastr';
     MatTabsModule,
     MatCardModule,
     MatIconModule,
-    ToastrModule.forRoot(),
-    BrowserAnimationsModule
+    ToastrModule.forRoot()
+  
     
     
   ],
