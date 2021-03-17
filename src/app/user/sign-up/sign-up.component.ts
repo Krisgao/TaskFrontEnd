@@ -35,15 +35,6 @@ export class SignUpComponent implements OnInit {
 
 
   submit(email,password,confirmPassword) {
-    // this.router.navigate(['list']);
-    // if (this.form.valid) {
-    //   this.submitEM.emit(this.form.value);
-    //   this.router.navigate(['/user']);
-
-    // }
-    // debugger
-    // console.log(this.form.value);
-
     this.userServices.registerUser(email,password,confirmPassword).subscribe((error) => 
     {
         console.log(error);
