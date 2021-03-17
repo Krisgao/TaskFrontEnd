@@ -25,6 +25,10 @@ import {MatTabsModule} from '@angular/material/tabs';
 import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from "@angular/material/icon";
 import { AuthGuard } from './auth/auth.guard';
+import { User } from './user/user.module';
+import { UserService } from './user.service';
+import { ToastrModule } from 'ngx-toastr';
+
 
 
 
@@ -58,10 +62,13 @@ import { AuthGuard } from './auth/auth.guard';
     MatSortModule,
     MatTabsModule,
     MatCardModule,
-    MatIconModule
+    MatIconModule,
+    ToastrModule.forRoot(),
+    BrowserAnimationsModule
+    
     
   ],
-  providers: [TestService,MatDialogModule,MatNativeDateModule, MatDatepickerModule,MatTabsModule,MatIconModule,AuthGuard],
+  providers: [TestService,MatDialogModule,MatNativeDateModule, MatDatepickerModule,MatTabsModule,MatIconModule,AuthGuard,UserService],
   bootstrap: [AppComponent],
   entryComponents: [TaskDetailComponent,AddComponent,UpdateComponent,DeleteComponent]
 })

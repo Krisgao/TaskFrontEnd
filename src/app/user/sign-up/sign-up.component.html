@@ -1,22 +1,22 @@
 <mat-card style="text-align: center;">
     <mat-card-title>Sign Up</mat-card-title>
 <mat-card-content>
-<form (ngSubmit)="submit()">
+<form #RegistrationForm = "ngForm" (ngSubmit)="submit(Email.value, Password.value, ConfirmPassword.value)">
   <p>
     <mat-form-field>
-      <input type="text" matInput placeholder="Email">
+      <input type="text" name = "Email" #Email ngModel matInput placeholder="Email">
     </mat-form-field>
   </p>
 
   <p>
     <mat-form-field>
-      <input type="password" matInput placeholder="Password">
+      <input type="text" name = "Password" #Password ngModel matInput placeholder="Password">
     </mat-form-field>
   </p>
 
   <p>
     <mat-form-field>
-      <input type="password" matInput placeholder="Comfirm Password">
+      <input type="text" name="ConfirmPassword" #ConfirmPassword ngModel matInput placeholder="Confirm Password">
     </mat-form-field>
   </p>
 
@@ -25,7 +25,7 @@
   </p> -->
 
   <div class="button">
-    <button type="submit" mat-button>Sign Up</button>
+    <button [disabled] = "!RegistrationForm.valid" type="submit" mat-button>Sign Up</button>
   </div>
 
 </form>
