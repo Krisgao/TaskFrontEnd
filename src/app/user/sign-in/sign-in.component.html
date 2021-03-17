@@ -1,21 +1,22 @@
 <mat-card>
     <mat-card-title>Login</mat-card-title>
 <mat-card-content>
-<form [formGroup]="form" (ngSubmit)="submit()">
+<form #signInForm='ngForm' (ngSubmit)="submit(theusername.value, thePassword.value)">
   <p>
     <mat-form-field>
-      <input type="text" matInput placeholder="Username" formControlName="username">
+      <input #theusername ngmodel required type="text" matInput placeholder="Username" formControlName="theusername">
     </mat-form-field>
   </p>
 
   <p>
     <mat-form-field>
-      <input type="password" matInput placeholder="Password" formControlName="password">
+      <input #thePassword ngModel required type="password" matInput placeholder="Password" formControlName="thePassword">
     </mat-form-field>
   </p>
 
-  <p *ngIf="error" class="error">
-    {{ error }}
+  <p *ngIf="isLoginError" style="color: red"
+  class="red-text center error-message">
+    Incorrect Username or Password ! 
   </p>
 
   <div class="button">

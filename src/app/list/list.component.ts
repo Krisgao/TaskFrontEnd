@@ -195,6 +195,8 @@ export class ListComponent implements OnInit, OnDestroy, AfterViewInit {
     this.testData.filter = searchValue;
   }
   logout(){
+    localStorage.removeItem('userToken');
+    
     this.router.navigate(['/user']);
   }
 }

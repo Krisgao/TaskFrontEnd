@@ -24,7 +24,7 @@ import { ListComponent } from './list/list.component';
 import {MatTabsModule} from '@angular/material/tabs';
 import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from "@angular/material/icon";
-
+import { AuthGuard } from './auth/auth.guard';
 
 
 
@@ -61,7 +61,7 @@ import { MatIconModule } from "@angular/material/icon";
     MatIconModule
     
   ],
-  providers: [TestService,MatDialogModule,MatNativeDateModule, MatDatepickerModule,MatTabsModule,MatIconModule],
+  providers: [TestService,MatDialogModule,MatNativeDateModule, MatDatepickerModule,MatTabsModule,MatIconModule,AuthGuard],
   bootstrap: [AppComponent],
   entryComponents: [TaskDetailComponent,AddComponent,UpdateComponent,DeleteComponent]
 })
