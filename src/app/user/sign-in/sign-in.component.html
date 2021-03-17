@@ -1,28 +1,30 @@
-<mat-card>
-    <mat-card-title>Login</mat-card-title>
-<mat-card-content>
-<form #signInForm='ngForm' (ngSubmit)="submit(theusername.value, thePassword.value)">
-  <p>
-    <mat-form-field>
-      <input #theusername ngmodel required type="text" matInput placeholder="Username" formControlName="theusername">
-    </mat-form-field>
-  </p>
+<mat-card style="text-align: center;">
+  <mat-card-title>Login</mat-card-title>
+  <mat-card-content>
+    <form #signInForm='ngForm' (ngSubmit)="submit(theusername.value, thePassword.value)">
+      <p>
+        <mat-form-field>
+          <input #theusername ngmodel required type="text" matInput placeholder="Username"
+            formControlName="theusername">
 
-  <p>
-    <mat-form-field>
-      <input #thePassword ngModel required type="password" matInput placeholder="Password" formControlName="thePassword">
-    </mat-form-field>
-  </p>
+        </mat-form-field>
+      </p>
 
-  <p *ngIf="isLoginError" style="color: red"
-  class="red-text center error-message">
-    Incorrect Username or Password ! 
-  </p>
+      <p>
+        <mat-form-field>
+          <input #thePassword ngModel required type="password" matInput placeholder="Password"
+            formControlName="thePassword">
+        </mat-form-field>
+      </p>
 
-  <div class="button">
-    <button type="submit" mat-button>Login</button>
-  </div>
+      <p *ngIf="LoginError" style="color: red" class="red-text center error-message">
+        Incorrect Username or Password !
+      </p>
 
-</form>
-</mat-card-content>
+      <div class="button">
+        <button [disabled]="!signInForm.valid" type="submit" class="btn btn-primary btn-block" mat-button>Login</button>
+      </div>
+
+    </form>
+  </mat-card-content>
 </mat-card>

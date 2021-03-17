@@ -11,32 +11,33 @@ import { TokenValues } from 'src/app/TokenValues';
   styleUrls: ['./sign-in.component.css']
 })
 export class SignInComponent implements OnInit {
-  
+
 
   // form: FormGroup = new FormGroup({
   //   username: new FormControl('theusername'),
   //   password: new FormControl('thePassword'),
   // });
   constructor(private router: Router, private authService: AuthService) { }
-  isLoginError: boolean = false;
+  LoginError: boolean = false;
   ngOnInit(): void {
   }
 
   token: TokenValues;
   submit(username, password) {
-   this.authService.validateUser(username, password).subscribe((data: any) => {localStorage.setItem('userToken', data.access_token);
-   this.router.navigate(['/list']);
- },
- (error: HttpErrorResponse) => {
-   this.isLoginError = true;
- })
+    this.authService.validateUser(username, password).subscribe((data: any) => {
+      localStorage.setItem('userToken', data.access_token);
+      this.router.navigate(['/list']);
+    },
+      (error: HttpErrorResponse) => {
+        this.LoginError = true;
+      })
     // this.router.navigate(['list']);
     // if (this.form.valid) {
     //   this.submitEM.emit(this.form.value);
-      
+
     // }
   }
-  
+
 
   // @Output() submitEM = new EventEmitter();
   // dologin(){
