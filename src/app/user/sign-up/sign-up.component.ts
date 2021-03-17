@@ -8,26 +8,16 @@ import { Router } from '@angular/router';
   styleUrls: ['./sign-up.component.css']
 })
 export class SignUpComponent implements OnInit {
-
-  form: FormGroup = new FormGroup({
-    username: new FormControl(''),
-    password: new FormControl(''),
-  });
   constructor(private router: Router) { }
 
   ngOnInit(): void {
   }
   submit() {
     // this.router.navigate(['list']);
-    if (this.form.valid) {
-      this.submitEM.emit(this.form.value);
-      this.router.navigate(['/user']);
+    // if (this.form.valid) {
+    //   this.submitEM.emit(this.form.value);
+    //   this.router.navigate(['/user']);
       
-    }
+    // }
   }
-  @Input() error: string | null;
-
-  @Output() submitEM = new EventEmitter();
-  
-
 }

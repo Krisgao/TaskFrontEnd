@@ -29,7 +29,7 @@ export interface Quote {
 })
 export class AppComponent implements OnInit {
   ngOnInit(): void {
-    throw new Error('Method not implemented.');
+    
   }
 //   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator; // pagenation
 //   @ViewChild('input', { static: true }) input: ElementRef;

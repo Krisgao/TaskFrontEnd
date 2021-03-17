@@ -4,16 +4,14 @@
     <form #signInForm='ngForm' (ngSubmit)="submit(theusername.value, thePassword.value)">
       <p>
         <mat-form-field>
-          <input #theusername ngmodel required type="text" matInput placeholder="Username"
-            formControlName="theusername">
+          <input #theusername ngModel name = 'theusername' required type="email" matInput placeholder="Email">
 
         </mat-form-field>
       </p>
 
       <p>
         <mat-form-field>
-          <input #thePassword ngModel required type="password" matInput placeholder="Password"
-            formControlName="thePassword">
+          <input #thePassword ngModel name="thePassword" required type="password" matInput placeholder="Password">
         </mat-form-field>
       </p>
 
