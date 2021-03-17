@@ -1,14 +1,13 @@
-<!-- <link   rel="stylesheet"   href="https://use.fontawesome.com/releases/v5.15.2/css/all.css"
+<link   rel="stylesheet"   href="https://use.fontawesome.com/releases/v5.15.2/css/all.css"
       integrity="sha384-vSIIfh2YWi9wW0r9iZe7RJPrKwp6bG+s9QZMoITbCckVJqGCCRhc+ccxNcdpHuYu"   crossorigin="anonymous" />
-<script src="https://kit.fontawesome.com/9493f7df8d.js" crossorigin="anonymous"></script> -->
+<script src="https://kit.fontawesome.com/9493f7df8d.js" crossorigin="anonymous"></script>
 
-<!-- <router-outlet></router-outlet> -->
 
-<router-outlet></router-outlet>
 
-<!-- <h1 align="center">All Tasks</h1>
+
+<h1 align="center">All Tasks</h1>
 <div>
-     <app-task-detail></app-task-detail> 
+    <!-- <app-task-detail></app-task-detail> -->
     <button (click)="openAddDialog()">Add New</button>
     <br>
     <mat-form-field>
@@ -65,4 +64,6 @@
           <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
     </table>
     <mat-paginator [pageSizeOptions]="[3, 5, 10, 20]" showFirstLastButtons></mat-paginator>
-</div> -->
+
+    <button (click)="logout()">Log out</button>
+</div>

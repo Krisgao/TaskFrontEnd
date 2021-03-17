@@ -27,170 +27,173 @@ export interface Quote {
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent implements OnInit, OnDestroy, AfterViewInit {
-  @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator; // pagenation
-  @ViewChild('input', { static: true }) input: ElementRef;
-  @ViewChild(MatSort) sort: MatSort;
+export class AppComponent implements OnInit {
+  ngOnInit(): void {
+    throw new Error('Method not implemented.');
+  }
+//   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator; // pagenation
+//   @ViewChild('input', { static: true }) input: ElementRef;
+//   @ViewChild(MatSort) sort: MatSort;
 
 
-  displayedColumns: string[] = [
-    'QuoteID',
-    'QuoteType',
-    'Contact',
-    'Task',
-    'DueDate',
-    'TaskType',
-    'More'
-  ];
+//   displayedColumns: string[] = [
+//     'QuoteID',
+//     'QuoteType',
+//     'Contact',
+//     'Task',
+//     'DueDate',
+//     'TaskType',
+//     'More'
+//   ];
   
-  testData = new MatTableDataSource<any>();
-  mysub: Subscription;
-  quotes: Quote[];
-  constructor(private mytest: TestService, private router: Router, private dialog: MatDialog) { }
-  ngOnInit() {
-    this.readData();
+//   testData = new MatTableDataSource<any>();
+//   mysub: Subscription;
+//   quotes: Quote[];
+//   constructor(private mytest: TestService, private router: Router, private dialog: MatDialog) { }
+//   ngOnInit() {
+//     this.readData();
 
-  }
-  ngAfterViewInit() {
-    this.testData.sort = this.sort;
-    this.testData.paginator = this.paginator;
+//   }
+//   ngAfterViewInit() {
+//     this.testData.sort = this.sort;
+//     this.testData.paginator = this.paginator;
     
-  }
+//   }
 
- readData(){
-  this.mysub = this.mytest.getData().subscribe(
-    (data: any) => {
-      this.quotes = data;
-      this.testData = new MatTableDataSource<any>(this.quotes);
-      this.testData.paginator = this.paginator;
-      this.testData.sort = this.sort;
+//  readData(){
+//   this.mysub = this.mytest.getData().subscribe(
+//     (data: any) => {
+//       this.quotes = data;
+//       this.testData = new MatTableDataSource<any>(this.quotes);
+//       this.testData.paginator = this.paginator;
+//       this.testData.sort = this.sort;
       
-    },
-    (error) => {
-      console.log(error);
-    },
-    () => {
-      console.log("I'm finished");
-    }
-  );
- }
+//     },
+//     (error) => {
+//       console.log(error);
+//     },
+//     () => {
+//       console.log("I'm finished");
+//     }
+//   );
+//  }
 
-  openDetailDialog(QuoteID, QuoteType, Contact, Task, DueDate, TaskType) {
+//   openDetailDialog(QuoteID, QuoteType, Contact, Task, DueDate, TaskType) {
 
-    const dialogConfig = new MatDialogConfig();
+//     const dialogConfig = new MatDialogConfig();
 
-    dialogConfig.disableClose = true;
-    dialogConfig.autoFocus = true;
-    dialogConfig.data = {
-      id: QuoteID,
-      type: QuoteType,
-      contact: Contact,
-      task: Task,
-      Due: DueDate,
-      Tasktype: TaskType
+//     dialogConfig.disableClose = true;
+//     dialogConfig.autoFocus = true;
+//     dialogConfig.data = {
+//       id: QuoteID,
+//       type: QuoteType,
+//       contact: Contact,
+//       task: Task,
+//       Due: DueDate,
+//       Tasktype: TaskType
       
-    };
+//     };
 
-    //this.dialog.open(TaskDetailComponent, dialogConfig);
-    const dialogRef = this.dialog.open(TaskDetailComponent, dialogConfig);
+//     //this.dialog.open(TaskDetailComponent, dialogConfig);
+//     const dialogRef = this.dialog.open(TaskDetailComponent, dialogConfig);
 
-    // dialogRef.afterClosed().subscribe(
-    //   data => console.log("Dialog output:", data)
-    // );
-  }
+//     // dialogRef.afterClosed().subscribe(
+//     //   data => console.log("Dialog output:", data)
+//     // );
+//   }
 
-  openEditDialog(QuoteID, QuoteType, Contact, Task, DueDate, TaskType) {
+//   openEditDialog(QuoteID, QuoteType, Contact, Task, DueDate, TaskType) {
 
-    const dialogConfig = new MatDialogConfig();
+//     const dialogConfig = new MatDialogConfig();
 
-    dialogConfig.disableClose = true;
-    dialogConfig.autoFocus = true;
-    dialogConfig.data = {
-      id: QuoteID,
-      type: QuoteType,
-      contact: Contact,
-      task: Task,
-      Due: DueDate,
-      Tasktype: TaskType
-      // title: 'Angular For Beginners'
-    };
+//     dialogConfig.disableClose = true;
+//     dialogConfig.autoFocus = true;
+//     dialogConfig.data = {
+//       id: QuoteID,
+//       type: QuoteType,
+//       contact: Contact,
+//       task: Task,
+//       Due: DueDate,
+//       Tasktype: TaskType
+//       // title: 'Angular For Beginners'
+//     };
 
-    //this.dialog.open(UpdateComponent, dialogConfig);
-    const dialogRef = this.dialog.open(UpdateComponent, dialogConfig);
+//     //this.dialog.open(UpdateComponent, dialogConfig);
+//     const dialogRef = this.dialog.open(UpdateComponent, dialogConfig);
 
-    dialogRef.afterClosed().subscribe(
-      // data => console.log("Dialog output:", data)
-      () => {
-        this.readData();
-        console.log("I'm finished");
+//     dialogRef.afterClosed().subscribe(
+//       // data => console.log("Dialog output:", data)
+//       () => {
+//         this.readData();
+//         console.log("I'm finished");
 
-      }
-    );
-  }
+//       }
+//     );
+//   }
 
-  openDeleteDialog(QuoteID, QuoteType, Contact, Task, DueDate, TaskType) {
+//   openDeleteDialog(QuoteID, QuoteType, Contact, Task, DueDate, TaskType) {
 
-    const dialogConfig = new MatDialogConfig();
+//     const dialogConfig = new MatDialogConfig();
 
-    dialogConfig.disableClose = true;
-    dialogConfig.autoFocus = true;
-    dialogConfig.data = {
-      id: QuoteID,
-      type: QuoteType,
-      contact: Contact,
-      task: Task,
-      Due: DueDate,
-      Tasktype: TaskType
-      // title: 'Angular For Beginners'
-    };
+//     dialogConfig.disableClose = true;
+//     dialogConfig.autoFocus = true;
+//     dialogConfig.data = {
+//       id: QuoteID,
+//       type: QuoteType,
+//       contact: Contact,
+//       task: Task,
+//       Due: DueDate,
+//       Tasktype: TaskType
+//       // title: 'Angular For Beginners'
+//     };
 
-    //this.dialog.open(UpdateComponent, dialogConfig);
-    const dialogRef = this.dialog.open(DeleteComponent, dialogConfig);
+//     //this.dialog.open(UpdateComponent, dialogConfig);
+//     const dialogRef = this.dialog.open(DeleteComponent, dialogConfig);
 
-    dialogRef.afterClosed().subscribe(
-      // data => console.log("Dialog output:", data)
-      () => {
-        this.readData();
-        console.log("I'm finished");
+//     dialogRef.afterClosed().subscribe(
+//       // data => console.log("Dialog output:", data)
+//       () => {
+//         this.readData();
+//         console.log("I'm finished");
 
-      }
-    );
-  }
+//       }
+//     );
+//   }
 
-  openAddDialog() {
+//   openAddDialog() {
 
-    const dialogConfig = new MatDialogConfig();
+//     const dialogConfig = new MatDialogConfig();
 
-    dialogConfig.disableClose = true;
-    dialogConfig.autoFocus = true;
+//     dialogConfig.disableClose = true;
+//     dialogConfig.autoFocus = true;
     
 
-    //this.dialog.open(TaskDetailComponent, dialogConfig);
-    const dialogRef = this.dialog.open(AddComponent, dialogConfig);
+//     //this.dialog.open(TaskDetailComponent, dialogConfig);
+//     const dialogRef = this.dialog.open(AddComponent, dialogConfig);
 
-    dialogRef.afterClosed().subscribe(
-    //   data => console.log("Dialog output:", data)
-    () => {
-      this.readData();
-      console.log("I'm finished");}
-     );
-  }
-
-
+//     dialogRef.afterClosed().subscribe(
+//     //   data => console.log("Dialog output:", data)
+//     () => {
+//       this.readData();
+//       console.log("I'm finished");}
+//      );
+//   }
 
 
 
-  title = 'TaskFrontEnd';
-  navigate() {
-    this.router.navigate(['task']);
-  }
-  ngOnDestroy() {
-    this.mysub.unsubscribe();
-  }
-  searchQuote(searchValue: string) {
-    searchValue = searchValue.trim();
-    searchValue = searchValue.toLowerCase();
-    this.testData.filter = searchValue;
-  }
+
+
+//   title = 'TaskFrontEnd';
+//   navigate() {
+//     this.router.navigate(['task']);
+//   }
+//   ngOnDestroy() {
+//     this.mysub.unsubscribe();
+//   }
+//   searchQuote(searchValue: string) {
+//     searchValue = searchValue.trim();
+//     searchValue = searchValue.toLowerCase();
+//     this.testData.filter = searchValue;
+//   }
 
 }

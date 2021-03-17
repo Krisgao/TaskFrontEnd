@@ -17,6 +17,14 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { DeleteComponent } from './delete/delete.component';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import {MatSortModule} from '@angular/material/sort';
+import { UserComponent } from './user/user.component';
+import { SignInComponent } from './user/sign-in/sign-in.component';
+import { SignUpComponent } from './user/sign-up/sign-up.component';
+import { ListComponent } from './list/list.component';
+import {MatTabsModule} from '@angular/material/tabs';
+import { MatCardModule } from '@angular/material/card';
+import { MatIconModule } from "@angular/material/icon";
+
 
 
 
@@ -28,7 +36,11 @@ import {MatSortModule} from '@angular/material/sort';
     TaskDetailComponent,
     AddComponent,
     UpdateComponent,
-    DeleteComponent
+    DeleteComponent,
+    UserComponent,
+    SignInComponent,
+    SignUpComponent,
+    ListComponent
   ],
   imports: [
     BrowserModule,
@@ -44,9 +56,12 @@ import {MatSortModule} from '@angular/material/sort';
     MatNativeDateModule,
     MatPaginatorModule,
     MatSortModule,
+    MatTabsModule,
+    MatCardModule,
+    MatIconModule
     
   ],
-  providers: [TestService,MatDialogModule,MatNativeDateModule, MatDatepickerModule],
+  providers: [TestService,MatDialogModule,MatNativeDateModule, MatDatepickerModule,MatTabsModule,MatIconModule],
   bootstrap: [AppComponent],
   entryComponents: [TaskDetailComponent,AddComponent,UpdateComponent,DeleteComponent]
 })
