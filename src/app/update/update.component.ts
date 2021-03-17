@@ -2,7 +2,7 @@ import { Component, OnInit, Inject } from '@angular/core';
 import { Router } from '@angular/router';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { AppComponent } from '../app.component';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { TestService } from '../test.service';
 
 @Component({
@@ -34,11 +34,11 @@ export class UpdateComponent implements OnInit {
   ngOnInit() {
     this.form = this.fb.group({
       QuoteID: [this.ID, []],
-      QuoteType: [this.quotetype, []],
-      Contact: [this.contact, []],
-      Task: [this.task, []],
-      DueDate: [this.duedate, []],
-      TaskType: [this.tasktype, []]
+      QuoteType: [this.quotetype, [Validators.required]],
+      Contact: [this.contact, [Validators.required]],
+      Task: [this.task, [Validators.required]],
+      DueDate: [this.duedate, [Validators.required]],
+      TaskType: [this.tasktype, [Validators.required]]
 
     });
   }

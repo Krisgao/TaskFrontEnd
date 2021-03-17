@@ -16,7 +16,7 @@
         <div *ngIf="form.get('Contact').invalid && (form.get('Contact').dirty || form.get('Contact').touched)"
             class="alert alert-danger">
             <div *ngIf="form.get('Contact').errors.required">
-                Quote Type is required.
+                Contact is required.
             </div>
         </div>
     </mat-form-field>
@@ -26,7 +26,7 @@
         <div *ngIf="form.get('Task').invalid && (form.get('Task').dirty || form.get('Task').touched)"
             class="alert alert-danger">
             <div *ngIf="form.get('Task').errors.required">
-                Quote Type is required.
+                Task is required.
             </div>
         </div>
     </mat-form-field>
@@ -37,7 +37,7 @@
         <div *ngIf="form.get('DueDate').invalid && (form.get('DueDate').dirty || form.get('DueDate').touched)"
             class="alert alert-danger">
             <div *ngIf="form.get('DueDate').errors.required">
-                Quote Type is required.
+                Due Date is required.
             </div>
         </div>
             <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
@@ -49,7 +49,7 @@
         <div *ngIf="form.get('TaskType').invalid && (form.get('TaskType').dirty || form.get('TaskType').touched)"
             class="alert alert-danger">
             <div *ngIf="form.get('TaskType').errors.required">
-                Quote Type is required.
+                Task Type is required.
             </div>
         </div>
     </mat-form-field>
