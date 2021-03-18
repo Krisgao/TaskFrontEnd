@@ -2,10 +2,10 @@
 
 <mat-dialog-content [formGroup]="form">
 
-    <mat-form-field>
+    <!-- <mat-form-field>
         <input readonly matInput placeholder="QuoteID" formControlName="QuoteID">
 
-    </mat-form-field>
+    </mat-form-field> -->
     <mat-form-field>
         <input matInput placeholder="QuoteType" formControlName="QuoteType">
         <div *ngIf="form.get('QuoteType').invalid && (form.get('QuoteType').dirty || form.get('QuoteType').touched)"
@@ -15,6 +15,7 @@
             </div>
         </div>
     </mat-form-field>
+    <br>
     <mat-form-field>
         <input matInput placeholder="Contact" formControlName="Contact">
         <div *ngIf="form.get('Contact').invalid && (form.get('Contact').dirty || form.get('Contact').touched)"
@@ -24,6 +25,7 @@
             </div>
         </div>
     </mat-form-field>
+    <br>
     <mat-form-field>
         <input matInput placeholder="Task" formControlName="Task">
         <div *ngIf="form.get('Task').invalid && (form.get('Task').dirty || form.get('Task').touched)"
@@ -33,6 +35,7 @@
             </div>
         </div>
     </mat-form-field>
+    <br>
     <mat-form-field>
         <input matInput placeholder="Date" formControlName="DueDate">
         <div *ngIf="form.get('DueDate').invalid && (form.get('DueDate').dirty || form.get('DueDate').touched)"
@@ -42,6 +45,7 @@
             </div>
         </div>
     </mat-form-field>
+    <br>
     <mat-form-field>
         <input matInput placeholder="TaskType" formControlName="TaskType">
         <div *ngIf="form.get('TaskType').invalid && (form.get('TaskType').dirty || form.get('TaskType').touched)"
@@ -51,7 +55,7 @@
             </div>
         </div>
     </mat-form-field>
-
+    <br>
 
 </mat-dialog-content>
 
